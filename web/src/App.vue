@@ -1,32 +1,62 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition name="fade">
+      <component v-bind:is="component" />
+    </transition>
+    <notifications group="foo" />
+    <notifications group="auth" />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// @ is an alias to /src
+import Home from '@/views/Home.vue'
+import LoadPage from '@/components/LoadPage.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+const $ = require("jquery");
+// Lo declaramos globalmente
+window.$ = $;
+export default {
+  name: 'App',
+  components: {
+    Home, LoadPage
+  },
+  data (){
+    return {
+      component:"LoadPage",
+      json: null
     }
+  },
+
+  created(){
+    this.$getLocation({
+    enableHighAccuracy: true, //defaults to false
+    timeout: Infinity, //defaults to Infinity
+    maximumAge: 1 //defaults to 0
+    
+})
+  .then(coordinates => {
+    console.log(coordinates);
+  });
+
+
+
+
+  
+    
+    setTimeout(() => {
+        this.component="Home";
+    }, 3500);
   }
 }
+</script>
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+
 </style>
