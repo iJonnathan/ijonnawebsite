@@ -76,7 +76,7 @@ export default {
 
         })
         .catch(error => {
-          console.log(error)
+          //console.log(error)
           Vue.notify({
             group: 'auth',
             title: error

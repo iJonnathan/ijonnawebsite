@@ -29,17 +29,17 @@ export default {
   },
 
   created(){
-    this.$getLocation({
+   /* this.$getLocation({
     enableHighAccuracy: true, //defaults to false
     timeout: Infinity, //defaults to Infinity
     maximumAge: 1 //defaults to 0
     
 })
   .then(coordinates => {
-    console.log(coordinates);
+    //console.log(coordinates);
   });
 
-
+*/
 
 
   
