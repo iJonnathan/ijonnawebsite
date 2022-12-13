@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "email-existence": "^0.1.6",
     "email-verifier": "^0.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodemailer": "^6.2.1",
     "save": "^2.4.0"
   },
